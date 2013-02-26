@@ -1,0 +1,179 @@
+GET    /api/v2/user/template_sets
+GET    /api/v2/user/template_sets/:tplset
+
+GET    /api/v2/user/appliances
+GET    /api/v2/user/appliances/:app
+DELETE /api/v2/user/appliances/:app
+POST   /api/v2/user/appliances
+       ! clone_from = :app
+       ? name       = :appname
+       ? arch       = :arch
+
+GET    /api/v2/user/appliances/:app/status
+
+GET    /api/v2/user/appliances/:app/configuration
+PUT    /api/v2/user/appliances/:app/configuration
+GET    /api/v2/user/appliances/:app/configuration/logo
+PUT    /api/v2/user/appliances/:app/configuration/logo
+GET    /api/v2/user/appliances/:app/configuration/background
+PUT    /api/v2/user/appliances/:app/configuration/background
+GET    /api/v2/user/appliances/:app/configuration/slms_ssl_certificate
+PUT    /api/v2/user/appliances/:app/configuration/slms_ssl_certificate
+
+GET    /api/v2/user/appliances/:app/sharing
+POST   /api/v2/user/appliances/:app/sharing/:username
+DELETE /api/v2/user/appliances/:app/sharing/:username
+
+GET    /api/v2/user/appliances/:app/repositories
+PUT    /api/v2/user/appliances/:app/repositories
+
+POST   /api/v2/user/appliances/:app/cmd/add_repository
+       ! repo_id = :repo
+POST   /api/v2/user/appliances/:app/cmd/remove_repository
+       ! repo_id = :repo
+POST   /api/v2/user/appliances/:app/cmd/add_user_repository
+
+GET    /api/v2/user/appliances/:app/software
+PUT    /api/v2/user/appliances/:app/software
+
+GET    /api/v2/user/appliances/:app/software/installed
+       ! build_id = :bld
+
+POST   /api/v2/user/appliances/:app/cmd/add_package
+       ! name          = :pkgname
+       ? version       = :pkgversion
+       ? repository_id = :repo
+POST   /api/v2/user/appliances/:app/cmd/remove_package
+       ! name = :pkgname
+
+POST   /api/v2/user/appliances/:app/cmd/add_pattern
+       ! name          = :patname
+       ? version       = :patversion
+       ? repository_id = :repo
+POST   /api/v2/user/appliances/:app/cmd/remove_pattern
+       ! name = :patname
+
+POST   /api/v2/user/appliances/:app/cmd/ban_package
+       ! name = :pkgname
+
+POST   /api/v2/user/appliances/:app/cmd/unban_package
+       ! name = :pkgname
+
+GET    /api/v2/user/appliances/:app/software/search
+       ! q          = :expr
+       ? all_fields = :all_fields
+       ? all_repos  = :all_repos
+
+GET    /api/v2/user/appliances/:app/software/manifest/:image_type
+       ? version = :version
+
+GET    /api/v2/user/appliances/:app/image_files
+       ! build_id = :bld
+       ! path     = :fspath
+
+GET    /api/v2/user/appliances/:app/gpg_keys
+GET    /api/v2/user/appliances/:app/gpg_keys/:key
+POST   /api/v2/user/appliances/:app/gpg_keys
+       ! name   = :keyname
+       ! target = :keyring
+       ! key    = :payload
+DELETE /api/v2/user/appliances/:app/gpg_keys/:key
+
+GET    /api/v2/user/files
+       ! appliance_id = :app
+
+POST   /api/v2/user/files
+       ! appliance_id = :app
+       ? filename = :filename
+       ? path = :fspath
+       ? owner = :owner
+       ? group = :group
+       ? permissions = :perms
+       ? enabled = :enabled
+       ? url = :fileurl
+
+GET    /api/v2/user/files/:file/data
+PUT    /api/v2/user/files/:file/data
+
+GET    /api/v2/user/files/:file
+PUT    /api/v2/user/files/:file
+DELETE /api/v2/user/files/:file
+
+GET    /api/v2/user/running_builds
+       ! appliance_id = :app
+GET    /api/v2/user/running_builds/:bld
+POST   /api/v2/user/running_builds
+       ! appliance_id = :app
+       ? force = :force
+       ? version = :version
+       ? image_type = :image_type
+       ? multi = :multi
+DELETE /api/v2/user/running_builds/:bld
+
+GET    /api/v2/user/builds
+       ! appliance_id = :app
+GET    /api/v2/user/builds/:bld
+DELETE /api/v2/user/builds/:bld
+
+GET    /api/v2/user/rpms
+       ! base_system = :base
+GET    /api/v2/user/rpms/:rpm
+GET    /api/v2/user/rpms/:rpm/data
+POST   /api/v2/user/rpms
+       ! base_system = :base
+PUT    /api/v2/user/rpms/:rpm
+DELETE /api/v2/user/rpms/:rpm
+
+GET    /api/v2/user/repositories
+       ? base_system = :base
+       ? filter = :expr
+
+POST   /api/v2/user/repositories
+       ! url = :url
+       ! name = :reponame
+
+POST   /api/v2/user/repositories/:repo/refresh
+
+GET    /api/v2/user/repositories/:repo
+
+GET    /api/v2/user/testdrives
+POST   /api/v2/user/testdrives
+       ! build_id = :bld
+
+GET    /api/v2/user/gallery/appliances
+       ! query = :expr
+       ? page = :page_num
+       ? per_page = :page_len
+
+GET    /api/v2/user/gallery/appliances/:app
+GET    /api/v2/user/gallery/appliances/:app/version/:version
+POST   /api/v2/user/gallery/appliances/:app/version/:version
+PUT    /api/v2/user/gallery/appliances/:app/version/:version
+DELETE /api/v2/user/gallery/appliances/:app/version/:version
+GET    /api/v2/user/gallery/appliances/:app/versions
+GET    /api/v2/user/gallery/appliances/:app/rating
+POST   /api/v2/user/gallery/appliances/:app/rating
+       ! rating = :rating
+GET    /api/v2/user/gallery/appliances/:app/software
+       ? version = :version
+GET    /api/v2/user/gallery/appliances/:app/logo
+GET    /api/v2/user/gallery/appliances/:app/background
+POST   /api/v2/user/gallery/appliances/:app/testdrive
+       ? version = :version
+GET    /api/v2/user/gallery/appliances/:app/comments
+POST   /api/v2/user/gallery/appliances/:app/comments
+       ? parent = :comment
+
+GET    /api/v2/user/kiwi_export
+       ! appliance_id = :app
+POST   /api/v2/user/kiwi_export
+       ! appliance_id = :app
+       ! image_type = :image_type
+GET    /api/v2/user/download_kiwi_export
+       ! build_id = :bld
+
+POST   /api/v2/user/kiwi_import
+       ! config_file = :config_file
+       ! base_system = :base
+       ! arch = :arch
+       ? name = :appname
