@@ -1,0 +1,26 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+======================================================================
+                        api-shotgun-studio-v2
+======================================================================
+----------------------------------------------------------------------
+           SUSE Studio APIv2 configuration for api-shotgun
+----------------------------------------------------------------------
+
+:Author: Roman Neuhauser
+:Contact: rneuhauser@suse.cz
+:Copyright: This document is in the public domain.
+
+Overview
+========
+
+This is `api-shotgun`_ configuration for SUSE Studio APIv2.
+
+Usage
+=====
+
+See Usage_ instructions for `api-shotgun`_.
+
+.. _api-shotgun: https://github.com/roman-neuhauser/api-shotgun
+.. _Usage:       https://github.com/roman-neuhauser/api-shotgun#usage
