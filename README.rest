@@ -17,10 +17,14 @@ Overview
 
 This is `api-shotgun`_ configuration for SUSE Studio APIv2.
 
+The `routes` file distinguishes mandatory and optional parameters
+based on the official documentation (`studio-help`_).
+
 Usage
 =====
 
 See Usage_ instructions for `api-shotgun`_.
 
+.. _studio-help: https://github.com/susestudio/studio-help
 .. _api-shotgun: https://github.com/roman-neuhauser/api-shotgun
 .. _Usage:       https://github.com/roman-neuhauser/api-shotgun#usage
